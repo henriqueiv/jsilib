@@ -125,14 +125,18 @@ public abstract class Image {
                 }
             }
         }
-
-        BImage aux = new BImage(256, (int) (maior / 10) + 1);
+        
+        int divide = 10;
+        if (this instanceof BImage){
+            divide = 100;
+        }
+        BImage aux = new BImage(256, (int) (maior / divide) + 1);
         WritableRaster wr = aux.getRaster();
         for (int x = 0; x < hist[band].length; x++) {
             System.out.println(x);
-            int num = (int) (hist[band][x] / 10);
+            int num = (int) (hist[band][x] / divide);
             for (int y = 0; y < num; y++) {
-                wr.setSample(x, ((maior / 10) - y), 0, 1);
+                wr.setSample(x, ((maior / divide) - y), 0, 1);
             }
         }
         return aux;

@@ -69,7 +69,7 @@ public class BWImage extends Image {
         }
     }
 
-    public void calculaDFTInversa() throws ImgLibError {
+    public BWImage calculaDFTInversa() throws ImgLibError {
         BWImage tempImg = new BWImage(getWidth(), getHeight());
         int n = getHeight();
         Raster r = getRaster();
@@ -97,6 +97,7 @@ public class BWImage extends Image {
             }
         }
         tempImg.saveToFile("imagem_recuperada.jpg");
+        return tempImg;
     }
 
     public void saveTransformToFile(String nome) {
